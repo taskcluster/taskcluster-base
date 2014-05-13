@@ -1,7 +1,7 @@
-#!/bin/bash -vex
-
-# USAGE: Run this file using `npm test`
-# Or execute it from project root folder.
+#!/bin/bash -ve
+# USAGE: Run this file using `npm test` (must run from repository root)
 
 ./node_modules/.bin/mocha \
-  config_test.js
+  test/config_test.js \
+  test/validator_test.js
+

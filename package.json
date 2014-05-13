@@ -5,14 +5,14 @@
   "description":  "Common modules for taskcluster components",
   "license":      "MPL-2.0",
   "scripts": {
-    "test":   "nodeunit tests/run.js"
+    "test":   "./test/runtests.sh"
   },
   "repository": {
     "type":   "git",
     "url":    "https://github.com/taskcluster/taskcluster-base.git"
   },
   "dependencies": {
-    "express":                          "3.4.8",
+    "express":                          "4.2.0",
     "passport":                         "0.1.18",
     "passport-persona":                 "0.1.7",
     "uuid":                             "1.4.1",
