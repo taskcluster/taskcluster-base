@@ -1,6 +1,6 @@
 module.exports = {
   config:     require('./config'),
-  api:        require('./api'),
+  API:        require('./api'),
   validator:  require('./validator')
 };
 
