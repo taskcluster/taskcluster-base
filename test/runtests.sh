@@ -6,5 +6,6 @@
   test/config_test.js       \
   test/validator_test.js    \
   test/api/publish_test.js  \
-  test/api/auth_test.js
+  test/api/auth_test.js     \
+  test/app_test.js
 
