@@ -65,7 +65,7 @@
                 },
                 "required": {
                   "type":         "boolean",
-                  "description":  "True, if key may be `_` indicating that no key is present. The should never be empty, but `_` is the fallback value."
+                  "description":  "True, if the key is always present, if `false` the value `_` will be used in place when no appropriate value is available for the key."
                 },
                 "maxSize": {
                   "type":         "integer",
