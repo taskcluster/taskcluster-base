@@ -1,15 +1,18 @@
-var assert      = require('assert');
-var debug       = require('debug')('base:exchanges');
-var _           = require('lodash');
-var Promise     = require('promise');
-var path        = require('path');
-var fs          = require('fs');
-var Validator   = require('./validator').Validator;
-var aws         = require('aws-sdk-promise');
-var amqplib     = require('amqplib');
+var assert        = require('assert');
+var debug         = require('debug')('base:exchanges');
+var _             = require('lodash');
+var Promise       = require('promise');
+var path          = require('path');
+var fs            = require('fs');
+var Validator     = require('./validator').Validator;
+var aws           = require('aws-sdk-promise');
+var amqplib       = require('amqplib');
+var events        = require('events');
+var util          = require('util');
 
 /** Class for publishing to a set of declared exchanges */
 var Publisher = function(conn, channel, entries, options) {
+  events.EventEmitter.call(this);
   assert(options.validator instanceof Validator,
          "options.validator must be an instance of Validator");
   this._conn = conn;
@@ -18,6 +21,15 @@ var Publisher = function(conn, channel, entries, options) {
   this._options = options;
 
   var that = this;
+  this._channel.on('error', function(err) {
+    debug("Channel error in Publisher: ", err.stack);
+    that.emit('error', err);
+  });
+  this._conn.on('error', function(err) {
+    debug("Connection error in Publisher: ", err.stack);
+    that.emit('error', err);
+  });
+
   entries.forEach(function(entry) {
     that[entry.name] = function() {
       // Copy arguments
@@ -84,6 +96,9 @@ var Publisher = function(conn, channel, entries, options) {
     };
   });
 };
+
+// Inherit from events.EventEmitter
+util.inherits(Publisher, events.EventEmitter);
 
 /** Close the connection */
 Publisher.prototype.close = function() {
@@ -223,6 +238,15 @@ Exchanges.prototype.configure = function(options) {
  * {
  *   connectionString:   '...',  // AMQP connection string
  * }
+ *
+ * This method will connect to AMQP server and return a instance of Publisher.
+ * The publisher will have a method for each declared exchange, the method
+ * will carry the `name` given when the exchange was declared.
+ *
+ * In case of connection or internal errors the publisher will emit the `error`
+ * event and all further attempts to use it will fail. In the future we may
+ * implement a form of reconnection, but for now, just leave the `error` events
+ * unhandled and let the process restart on its own.
  *
  * Return a promise for an instance of `Publisher`.
  */
