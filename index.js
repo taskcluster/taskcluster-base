@@ -3,6 +3,7 @@ module.exports = {
   app:        require('./app'),
   validator:  require('./validator'),
   API:        require('./api'),
-  Entity:     require('./entity')
+  Entity:     require('./entity'),
+  Exchanges:  require('./exchanges')
 };
 
