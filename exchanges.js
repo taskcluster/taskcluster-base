@@ -237,6 +237,7 @@ Exchanges.prototype.configure = function(options) {
  * Options:
  * {
  *   connectionString:   '...',  // AMQP connection string
+ *   validator:                  // Instance of base.validator.Validator
  * }
  *
  * This method will connect to AMQP server and return a instance of Publisher.
@@ -366,6 +367,28 @@ Exchanges.prototype.publish = function(options) {
     Body:             JSON.stringify(this.reference(options), undefined, 2),
     ContentType:      'application/json'
   }).promise();
+};
+
+/**
+ * Setup exchanges, return promise for a publisher and publish reference if,
+ * ordered to do so.
+ *
+ * options:
+ * {
+ *   publish:        false // Publish reference during setup
+ * }
+ *
+ * Takes the same options as `publish` and `connect`.
+ */
+Exchanges.prototype.setup = function(options) {
+  var promises = [];
+  promises.push(this.connect(options));
+  if (options.publish === true) {
+    promises.push(this.publish(options));
+  }
+  return Promise.all(promises).then(function(vals) {
+    return vals[0]; // Return publisher
+  });
 };
 
 // Export the Exchanges class

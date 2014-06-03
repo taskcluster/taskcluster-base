@@ -4,6 +4,7 @@ module.exports = {
   validator:  require('./validator'),
   API:        require('./api'),
   Entity:     require('./entity'),
-  Exchanges:  require('./exchanges')
+  Exchanges:  require('./exchanges'),
+  testing:    require('./testing')
 };
 
