@@ -11,5 +11,6 @@
   test/exchanges_test.js                    \
   test/publisher_test.js                    \
   test/testing/localapp_test.js             \
+  test/testing/schemas_test.js              \
   ;
 

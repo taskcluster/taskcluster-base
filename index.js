@@ -1,10 +1,7 @@
-module.exports = {
-  config:     require('./config'),
-  app:        require('./app'),
-  validator:  require('./validator'),
-  API:        require('./api'),
-  Entity:     require('./entity'),
-  Exchanges:  require('./exchanges'),
-  testing:    require('./testing')
-};
-
+exports.config    = require('./config');
+exports.app       = require('./app');
+exports.validator = require('./validator');
+exports.API       = require('./api');
+exports.Entity    = require('./entity');
+exports.Exchanges = require('./exchanges');
+exports.testing   = require('./testing');
