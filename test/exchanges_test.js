@@ -166,6 +166,10 @@ suite("Exchanges", function() {
           multipleWords:  false,
           required:       false,
           maxSize:        16
+        }, {
+          name:           'myConstant',
+          summary:        "Some constant to test",
+          constant:       "-constant-"
         }
       ],
       schema: 'http://schemas.taskcluster.net/base/tests/exchanges-test.json',
