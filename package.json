@@ -25,7 +25,7 @@
     "superagent":                       "0.18.2",
     "superagent-promise":               "0.1.2",
     "superagent-hawk":                  "0.0.4",
-    "jayschema":                        "0.2.8",
+    "jjv":                              "1.0.0",
     "azure-table-node":                 "1.4.1",
     "aws-sdk":                          "2.0.11",
     "aws-sdk-promise":                  "0.0.0",
