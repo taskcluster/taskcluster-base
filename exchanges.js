@@ -400,7 +400,10 @@ Exchanges.prototype.reference = function(options) {
         name:           entry.name,
         title:          entry.title,
         description:    entry.description,
-        routingKey:     entry.routingKey,
+        routingKey:     entry.routingKey.map(function(key) {
+          return _.pick(key, 'name', 'summary', 'constant',
+                             'multipleWords', 'required');
+        }),
         schema:         entry.schema
       };
     })
@@ -418,7 +421,7 @@ Exchanges.prototype.reference = function(options) {
                   'exchanges-reference.json#';
   var errors = validator.check(reference, refSchema);
   if (errors) {
-    debug("Exchanges.references(): Failed to ½ against schema, " +
+    debug("Exchanges.references(): Failed to validate against schema, " +
           "errors: %j reference: %j", errors, reference);
     throw new Error("API.references(): Failed to validate against schema");
   }
