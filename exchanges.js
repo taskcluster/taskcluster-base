@@ -30,9 +30,10 @@ var Publisher = function(conn, channel, entries, options) {
   events.EventEmitter.call(this);
   assert(options.validator instanceof Validator,
          "options.validator must be an instance of Validator");
-  assert(options.drain, "options.drain must be given");
-  assert(options.component, "component name for statistics is required");
-  assert(options.process,   "process name for statistics is required");
+  if (options.drain) {
+    assert(options.component, "component name for statistics is required");
+    assert(options.process,   "process name for statistics is required");
+  }
   this._conn = conn;
   this._channel = channel;
   this._entries = entries;
@@ -350,9 +351,10 @@ Exchanges.prototype.connect = function(options) {
   assert(options.connectionString, "ConnectionString must be provided");
   assert(options.validator instanceof Validator,
          "An instance of base.validator.Validator must be given");
-  assert(options.drain, "options.drain must be given");
-  assert(options.component, "component name for statistics is required");
-  assert(options.process,   "process name for statistics is required");
+  if (options.drain) {
+    assert(options.component, "component name for statistics is required");
+    assert(options.process,   "process name for statistics is required");
+  }
 
   // Clone entries for consistency
   var entries = _.cloneDeep(this._entries);
