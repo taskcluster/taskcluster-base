@@ -226,9 +226,7 @@ suite("Exchanges (Publish on Pulse)", function() {
     }).then(function() {
       var testExchange = 'exchange/' + cfg.get('pulse:username') +
                          '/test-exchange';
-      return Promise.all([
-        channel.bindQueue(queue, testExchange, 'myid.#')
-      ]);
+      return channel.bindQueue(queue, testExchange, 'myid.#');
     }).then(function() {
       return channel.consume(queue, function(msg) {
         msg.content = JSON.parse(msg.content.toString());
@@ -244,9 +242,10 @@ suite("Exchanges (Publish on Pulse)", function() {
         });
       });
     }).then(function() {
-      return new Promise(function(accept) {setTimeout(accept, 300);});
+      return new Promise(function(accept) {setTimeout(accept, 400);});
     }).then(function() {
-      assert(messages.length === 1, "Didn't get exactly one message");
+      // Others could be publishing to this exchange, so we check msgs > 0
+      assert(messages.length > 0, "Didn't get exactly any messages");
     });
   });
 
