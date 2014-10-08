@@ -184,9 +184,71 @@ suite("Exchanges", function() {
       CCBuilder:          function() { return []; }
     });
 
-    exchanges.reference();
+    var reference = exchanges.reference();
+    assert(reference.exchangePrefix === '');
+    var referencePrefixed = exchanges.reference({exchangePrefix: 'v1/'});
+    assert(referencePrefixed.exchangePrefix === 'v1/');
   });
 
+
+  test("reference (pulse)", function() {
+    // Create an exchanges
+    var exchanges = new base.Exchanges({
+      title:              "Title for my Events",
+      description:        "Test exchanges used for testing things only",
+      exchangePrefix:     'v1/'
+    });
+    // Check that we can declare an exchange
+    exchanges.declare({
+      exchange:           'test-exchange',
+      name:               'testExchange',
+      title:              "Test Exchange",
+      description:        "Place we post message for **testing**.",
+      routingKey: [
+        {
+          name:           'testId',
+          summary:        "Identifier that we use for testing",
+          multipleWords:  false,
+          required:       true,
+          maxSize:        22
+        }, {
+          name:           'taskRoutingKey',
+          summary:        "Test specific routing-key: `test.key`",
+          multipleWords:  true,
+          required:       true,
+          maxSize:        128
+        }, {
+          name:           'state',
+          summary:        "State of something",
+          multipleWords:  false,
+          required:       false,
+          maxSize:        16
+        }, {
+          name:           'myConstant',
+          summary:        "Some constant to test",
+          constant:       "-constant-"
+        }
+      ],
+      schema: 'http://schemas.taskcluster.net/base/tests/exchanges-test.json',
+      messageBuilder:     function(test) { return test; },
+      routingKeyBuilder:  function(test, state) {
+        return {
+          testId:           test.id,
+          taskRoutingKey:   test.key,
+          state:            state
+        }
+      },
+      CCBuilder:          function() { return []; }
+    });
+
+    var reference = exchanges.reference({
+      credentials: {
+        username:   'test-user'
+      }
+    });
+
+    assert(reference.exchangePrefix === 'exchange/test-user/v1/');
+  });
 
   test("publish", function() {
     var cfg = base.config({

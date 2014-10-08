@@ -14,6 +14,7 @@ mocha                                 \
   test/app_test.js                    \
   test/exchanges_test.js              \
   test/publisher_test.js              \
+  test/pulsepublisher_test.js         \
   test/stats_test.js                  \
   test/testing/localapp_test.js       \
   test/testing/localapp2_test.js      \

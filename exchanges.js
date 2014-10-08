@@ -26,7 +26,7 @@ var ExchangeReports = new stats.Series({
 });
 
 /** Class for publishing to a set of declared exchanges */
-var Publisher = function(conn, channel, entries, options) {
+var Publisher = function(conn, channel, entries, exchangePrefix, options) {
   events.EventEmitter.call(this);
   assert(options.validator instanceof Validator,
          "options.validator must be an instance of Validator");
@@ -105,7 +105,7 @@ var Publisher = function(conn, channel, entries, options) {
       var payload = new Buffer(JSON.stringify(message), 'utf8');
 
       // Find exchange name
-      var exchange = options.exchangePrefix + entry.exchange;
+      var exchange = exchangePrefix + entry.exchange;
 
       // Log that we're publishing a message
       debug("Publishing message on exchange: %s", exchange);
@@ -331,7 +331,13 @@ Exchanges.prototype.configure = function(options) {
  *
  * Options:
  * {
- *   connectionString:   '...',  // AMQP connection string
+ *   credentials: {
+ *     username:        '...',   // Pulse username
+ *     password:        '...',   // Pulse password
+ *     hostname:        '...'    // Hostname, defaults to pulse.mozilla.org
+ *   },
+ *   connectionString:  '...',   // AMQP connection string, if not credentials
+ *   exchangePrefix:    '...',   // Exchange prefix
  *   validator:                  // Instance of base.validator.Validator
  *   drain:             new stats.Influx(...),  // Statistics drain
  *   component:         'queue'  // Component name in statistics
@@ -350,15 +356,45 @@ Exchanges.prototype.configure = function(options) {
  * Return a promise for an instance of `Publisher`.
  */
 Exchanges.prototype.connect = function(options) {
-  options = _.defaults({}, options || {}, this._options);
+  options = _.defaults({}, options || {}, this._options, {
+    credentials:        {}
+  });
 
   // Check we have a connection string
-  assert(options.connectionString, "ConnectionString must be provided");
+  assert(options.connectionString ||
+         (options.credentials.username && options.credentials.password),
+         "ConnectionString or credentials must be provided");
   assert(options.validator instanceof Validator,
          "An instance of base.validator.Validator must be given");
   if (options.drain) {
     assert(options.component, "component name for statistics is required");
     assert(options.process,   "process name for statistics is required");
+  }
+
+  // Find exchange prefix, may be further prefixed if pulse credentials
+  // are given
+  var exchangePrefix = options.exchangePrefix;
+
+  // If we have pulse credentials, construct connectionString
+  if (options.credentials &&
+      options.credentials.username &&
+      options.credentials.password) {
+    options.connectionString = [
+      'amqps://',         // Ensure that we're using SSL
+      options.credentials.username,
+      ':',
+      options.credentials.password,
+      '@',
+      options.credentials.hostname || 'pulse.mozilla.org',
+      ':',
+      5671                // Port for SSL
+    ].join('');
+    // Also construct exchange prefix
+    exchangePrefix = [
+      'exchange',
+      options.credentials.username,
+      options.exchangePrefix
+    ].join('/');
   }
 
   // Clone entries for consistency
@@ -374,7 +410,7 @@ Exchanges.prototype.connect = function(options) {
     channel = channel_;
 
     return Promise.all(entries.map(function(entry) {
-      var name = options.exchangePrefix + entry.exchange;
+      var name = exchangePrefix + entry.exchange;
       return channel.assertExchange(name, 'topic', {
         durable:      options.durableExchanges,
         internal:     false,
@@ -382,13 +418,37 @@ Exchanges.prototype.connect = function(options) {
       });
     }));
   }).then(function() {
-    return new Publisher(conn, channel, entries, options);
+    return new Publisher(conn, channel, entries, exchangePrefix, options);
   });
 };
 
-/** Return reference as JSON for the declared exchanges */
+/**
+ * Return reference as JSON for the declared exchanges
+ *
+ * options: {
+ *   credentials: {
+ *     username:        '...',   // Pulse username
+ *   },
+ *   exchangePrefix:    '...',   // Exchange prefix, if not credentials
+ * }
+ */
 Exchanges.prototype.reference = function(options) {
-  options = _.defaults({}, options || {}, this._options);
+  options = _.defaults({}, options || {}, this._options, {
+    credentials:        {}
+  });
+
+  // Exchange prefix maybe prefixed additionally, if pulse credentials is given
+  var exchangePrefix = options.exchangePrefix;
+
+  // If we have a pulse user construct exchange prefix from username
+  if (options.credentials.username) {
+    // Construct exchange prefix
+    exchangePrefix = [
+      'exchange',
+      options.credentials.username,
+      options.exchangePrefix
+    ].join('/');
+  }
 
   // Check title and description
   assert(options.title,       "title must be provided");
@@ -399,7 +459,7 @@ Exchanges.prototype.reference = function(options) {
     version:            '0.2.0',
     title:              options.title,
     description:        options.description,
-    exchangePrefix:     options.exchangePrefix,
+    exchangePrefix:     exchangePrefix,
     entries: this._entries.map(function(entry) {
       return {
         type:           'topic-exchange',
@@ -442,6 +502,9 @@ Exchanges.prototype.reference = function(options) {
  *
  * options:
  * {
+ *   credentials: {
+ *     username:        '...',                // Pulse username (optional)
+ *   },
  *   exchangePrefix:  'queue/v1/'             // Prefix for all exchanges
  *   referencePrefix: 'queue/v1/events.json'  // Prefix within S3 bucket
  *   referenceBucket: 'reference.taskcluster.net',
