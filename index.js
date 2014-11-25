@@ -1,3 +1,5 @@
+"use strict";
+
 // Lazy load all submodules, not many production systems need to load
 // 'testing' and loading code actually takes time.
 [

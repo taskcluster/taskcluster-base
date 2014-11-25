@@ -1,3 +1,5 @@
+"use strict";
+
 var assert        = require('assert');
 var debug         = require('debug')('base:exchanges');
 var _             = require('lodash');
