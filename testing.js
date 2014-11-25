@@ -23,14 +23,14 @@ var taskcluster   = require('taskcluster-client');
  * **Example:**
  * ```js
  * suite("MyTests", function() {
- *   var events = new base.testing.Events({...});
+ *   var receiver = new base.testing.PulseTestReceiver({...});
  *
  *
  *   test("create task message arrives", function() {
  *     var taskId = slugid.v4();
  *
  *     // Start listening for a message with the above taskId
- *     events.listenFor('my-create-task-message', queueEvents.taskCreated({
+ *     receiver.listenFor('my-create-task-message', queueEvents.taskCreated({
  *       taskId:     taskId
  *     })).then(function() {
  *       // We are now listen for a message with the taskId
@@ -38,7 +38,7 @@ var taskcluster   = require('taskcluster-client');
  *       return queue.createTask(taskId, {...});
  *     }).then(function() {
  *       // Now we wait for the message to arrive
- *       return events.waitFor('my-create-task-message');
+ *       return receiver.waitFor('my-create-task-message');
  *     }).then(function(message) {
  *       // Now we have the message
  *     });
@@ -47,12 +47,12 @@ var taskcluster   = require('taskcluster-client');
  * });
  * ```
  *
- * The `events` object will setup an PulseConnection before all tests and close
- * this PulseConnection after all tests have run. This should make tests run
- * faster. All internal state, ie. the names given to `listenFor` and `waitFor`
+ * The `receiver` object will setup an PulseConnection before all tests and
+ * close the PulseConnection after all tests. This should make tests run faster.
+ * All internal state, ie. the names given to `listenFor` and `waitFor`
  * will be reset between all tests.
  */
-var Events = function(credentials) {
+var PulseTestReceiver = function(credentials) {
   var that = this;
   this._connection        = new taskcluster.PulseConnection(credentials);
   this._listeners         = null;
@@ -60,7 +60,7 @@ var Events = function(credentials) {
 
   // **Note**, the before(), beforeEach(9, afterEach() and after() functions
   // below are mocha hooks. Ie. they are called by mocha, that is also the
-  // reason that `Events` only works in the context of a mocha test.
+  // reason that `PulseTestReceiver` only works in the context of a mocha test.
 
   // Before all tests we ask the pulseConnection to connect, why not it offers
   // slightly better performance, and we want tests to run fast
@@ -101,7 +101,7 @@ var Events = function(credentials) {
 };
 
 
-Events.prototype.listenFor = function(name, binding) {
+PulseTestReceiver.prototype.listenFor = function(name, binding) {
   // Check that the `name` haven't be used before in this test. Remember
   // that we reset this._promisedMessages beforeEach() test in mocha.
   if (this._promisedMessages[name] !== undefined) {
@@ -137,7 +137,7 @@ Events.prototype.listenFor = function(name, binding) {
 };
 
 
-Events.prototype.waitFor = function(name) {
+PulseTestReceiver.prototype.waitFor = function(name) {
   // Check that the `name` have been used with listenFor in this test
   if (this._promisedMessages[name] === undefined) {
     throw new Error("listenFor has not been called with name: '" + name + "'" +
@@ -147,15 +147,8 @@ Events.prototype.waitFor = function(name) {
   return this._promisedMessages[name];
 };
 
-
-
-// Export Events
-exports.Events = Events;
-
-
-
-
-
+// Export PulseTestReceiver
+exports.PulseTestReceiver = PulseTestReceiver;
 
 
 

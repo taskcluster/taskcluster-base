@@ -1,4 +1,4 @@
-suite('testing.Events', function() {
+suite('testing.PulseTestReceiver', function() {
   var base          = require('../../');
   var assert        = require('assert');
   var path          = require('path');
@@ -66,14 +66,14 @@ suite('testing.Events', function() {
 
   // Now let's create a single event listener for messages, or whatever we
   // should call this utility.
-  var events = new base.testing.Events(cfg.get('pulse'));
+  var receiver = new base.testing.PulseTestReceiver(cfg.get('pulse'));
 
   test("Can publish message", function() {
     // Create someId
     var mySomeId = slugid.v4();
 
     // Start listening for message from testExchange with someId
-    return events.listenFor('my-message', exchangeEvents.testExchange({
+    return receiver.listenFor('my-message', exchangeEvents.testExchange({
       someId:     mySomeId
     })).then(function() {
       // Now that we're listening for a message from testExchange with mySomeId
@@ -87,7 +87,7 @@ suite('testing.Events', function() {
       }, mySomeId);
     }).then(function() {
       // Now that the message has been sent, we waitFor it
-      return events.waitFor('my-message');
+      return receiver.waitFor('my-message');
     }).then(function(message) {
       assert(message.payload.someString === "Hello World",
              "The world expected a greeting!");
