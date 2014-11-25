@@ -45,7 +45,8 @@
     "js-yaml":                          "3.2.2",
     "url-join":                         "0.0.1",
     "usage":                            "0.4.13",
-    "hoek":                             "2.x.x"
+    "hoek":                             "2.x.x",
+    "taskcluster-client":               "0.17.9"
   },
   "devDependencies": {
     "mocha":                            "1.21.4"
