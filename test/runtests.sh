@@ -3,6 +3,7 @@
 
 mocha                                       \
   test/entity/create_load_test.js           \
+  test/entity/context_test.js               \
   test/entity/modify_test.js                \
   test/entity/reload_test.js                \
   test/entity/migration_definition_test.js  \
