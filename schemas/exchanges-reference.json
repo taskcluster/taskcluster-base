@@ -7,7 +7,13 @@
   "properties": {
     "version": {
       "description":          "Exchange reference version",
-      "enum":                 ["0.2.0"]
+      "enum":                 [0]
+    },
+    "$schema": {
+      "description":          "Link to schema for this reference. That is a link to this very document. Typically used to identify what kind of reference this file is.",
+      "title":                "Schema Reference",
+      "type":                 "string",
+      "format":               "uri"
     },
     "title": {
       "description":          "Title for set of exchanges in markdown",
@@ -93,5 +99,5 @@
     }
   },
   "additionalProperties":   false,
-  "required": ["version", "title", "description", "exchangePrefix", "entries"]
+  "required": ["version", "$schema", "title", "description", "exchangePrefix", "entries"]
 }

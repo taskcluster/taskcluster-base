@@ -7,7 +7,13 @@
   "properties": {
     "version": {
       "description":          "API reference version",
-      "enum":                 ["0.2.0"]
+      "enum":                 [0]
+    },
+    "$schema": {
+      "description":          "Link to schema for this reference. That is a link to this very document. Typically used to identify what kind of reference this file is.",
+      "title":                "Schema Reference",
+      "type":                 "string",
+      "format":               "uri"
     },
     "title": {
       "description":          "API title in markdown",
@@ -97,5 +103,5 @@
     }
   },
   "additionalProperties":   false,
-  "required": ["version", "title", "description", "baseUrl", "entries"]
+  "required": ["version", "$schema", "title", "description", "baseUrl", "entries"]
 }

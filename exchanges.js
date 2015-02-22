@@ -458,7 +458,9 @@ Exchanges.prototype.reference = function(options) {
 
   // Create reference
   var reference = {
-    version:            '0.2.0',
+    version:            0,
+    '$schema':          'http://schemas.taskcluster.net/base/v1/' +
+                        'exchanges-reference.json',
     title:              options.title,
     description:        options.description,
     exchangePrefix:     exchangePrefix,
