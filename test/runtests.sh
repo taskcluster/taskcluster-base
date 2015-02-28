@@ -29,7 +29,6 @@ mocha                                       \
   test/api/responsetimer_test.js            \
   test/app_test.js                          \
   test/exchanges_test.js                    \
-  test/publisher_test.js                    \
   test/pulsepublisher_test.js               \
   test/stats_test.js                        \
   test/testing/pulsetestreceiver_test.js    \
