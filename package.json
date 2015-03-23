@@ -1,6 +1,6 @@
 {
   "name":         "taskcluster-base",
-  "version":      "0.7.15",
+  "version":      "0.7.16",
   "author":       "Jonas Finnemann Jensen <jopsen@gmail.com>",
   "description":  "Common modules for taskcluster components",
   "license":      "MPL-2.0",
@@ -44,7 +44,7 @@
     "express-sslify":                   "0.1.0",
     "js-yaml":                          "3.2.2",
     "url-join":                         "0.0.1",
-    "usage":                            "0.4.13",
+    "usage":                            "0.6.0",
     "hoek":                             "2.x.x",
     "taskcluster-client":               "0.18.1",
     "json-stable-stringify":            "1.0.0",
