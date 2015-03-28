@@ -7,7 +7,7 @@
   "properties": {
     "version": {
       "description":          "Exchange reference version",
-      "enum":                 [0]
+      "enum":                 [0, "0.2.0"]
     },
     "$schema": {
       "description":          "Link to schema for this reference. That is a link to this very document. Typically used to identify what kind of reference this file is.",
