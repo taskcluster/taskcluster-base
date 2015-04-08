@@ -204,9 +204,9 @@ var app = function(options) {
 
   // Middleware for development
   if (app.get('env') == 'development') {
-    app.use(morgan('dev'));
+    //app.use(morgan('dev'));
   } else {
-    app.use(morgan('tiny'))
+    //app.use(morgan('tiny'))
   }
 
   // Add some auxiliary methods to the app
