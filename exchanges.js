@@ -405,7 +405,12 @@ Exchanges.prototype.connect = function(options) {
   // Create connection
   var conn = null;
   var channel = null;
-  return amqplib.connect(options.connectionString).then(function(conn_) {
+  return amqplib.connect(options.connectionString, {
+    // Disable TCP Nagle, test don't show any difference in performance, but
+    // it probably can't hurt to disable Nagle, this is a low bandwidth
+    // application, so it makes a lot of sense to disable Nagle.
+    noDelay:          true
+  }).then(function(conn_) {
     conn = conn_;
     return conn.createConfirmChannel();
   }).then(function(channel_) {

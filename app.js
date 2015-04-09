@@ -206,7 +206,7 @@ var app = function(options) {
   if (app.get('env') == 'development') {
     app.use(morgan('dev'));
   } else {
-    app.use(morgan('tiny'))
+    app.use(morgan('tiny'));
   }
 
   // Add some auxiliary methods to the app
