@@ -122,6 +122,72 @@ suite("Exchanges (Publish on Pulse)", function() {
     });
   });
 
+
+  /*
+  // Test that we can publish messages fast
+  test("publish message 400", function() {
+    var promises = [];
+    return exchanges.connect().then(function(publisher) {
+      for (var i = 0; i < 400; i++) {
+        promises.push(new Promise(function(accept) {
+          setTimeout(accept, Math.floor(i / 4));
+        }).then(function() {
+          return publisher.testExchange({someString: "My message" + i}, {
+            testId:           "myid",
+            taskRoutingKey:   "some.string.with.dots",
+            state:            undefined // Optional
+          }).then(function() {
+            publisher.testExchange({someString: "My message" + i}, {
+              testId:           "myid",
+              taskRoutingKey:   "some.string.with.dots",
+              state:            undefined // Optional
+            });
+          });
+        }));
+      }
+      return Promise.all(promises);
+    });
+  }); return; // */
+
+  /*
+  // Test that we can publish messages fast
+  test("publish message 400", function() {
+    var promises = [];
+    return exchanges.connect().then(function(publisher) {
+      for (var i = 0; i < 400; i++) {
+        promises.push(publisher.testExchange({someString: "My message" + i}, {
+          testId:           "myid",
+          taskRoutingKey:   "some.string.with.dots",
+          state:            undefined // Optional
+        }));
+      }
+      return Promise.all(promises);
+    });
+  }); return; // */
+
+  /*
+  // Test that we can publish messages fast (for TCP Nagle disable test)
+  test("publish message", function() {
+    return exchanges.connect().then(function(publisher) {
+      var i = 0;
+      var loop = function() {
+        i += 1;
+        if (i > 400) {
+          return;
+        }
+        console.log(i);
+        return publisher.testExchange({someString: "My message"}, {
+          testId:           "myid",
+          taskRoutingKey:   "some.string.with.dots",
+          state:            undefined // Optional
+        }).then(function() {
+          return loop();
+        });
+      };
+      return loop();
+    });
+  }); return; // */
+
   // Test that we can publish messages
   test("publish message w. number in routing key", function() {
     return exchanges.connect().then(function(publisher) {
