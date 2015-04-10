@@ -122,6 +122,33 @@ suite("Exchanges (Publish on Pulse)", function() {
     });
   });
 
+
+  /*
+  // Test that we can publish messages fast
+  test("publish message 400", function() {
+    var promises = [];
+    return exchanges.connect().then(function(publisher) {
+      for (var i = 0; i < 400; i++) {
+        promises.push(new Promise(function(accept) {
+          setTimeout(accept, Math.floor(i / 4));
+        }).then(function() {
+          return publisher.testExchange({someString: "My message" + i}, {
+            testId:           "myid",
+            taskRoutingKey:   "some.string.with.dots",
+            state:            undefined // Optional
+          }).then(function() {
+            publisher.testExchange({someString: "My message" + i}, {
+              testId:           "myid",
+              taskRoutingKey:   "some.string.with.dots",
+              state:            undefined // Optional
+            });
+          });
+        }));
+      }
+      return Promise.all(promises);
+    });
+  }); return; // */
+
   /*
   // Test that we can publish messages fast
   test("publish message 400", function() {
