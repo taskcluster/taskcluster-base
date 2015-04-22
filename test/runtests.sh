@@ -19,6 +19,7 @@ mocha                                       \
   test/entity/texttype_test.js              \
   test/entity/sas_test.js                   \
   test/entity/auth_test.js                  \
+  test/legacyentity_test.js                 \
   test/config_test.js                       \
   test/validator_test.js                    \
   test/api/publish_test.js                  \

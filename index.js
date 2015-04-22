@@ -9,6 +9,7 @@ _.forIn({
   validator:      './validator',
   API:            './api',
   Entity:         './lib/entity',
+  LegacyEntity:   './lib/legacyentity',
   AzureAgent:     './lib/azureagent',
   Exchanges:      './exchanges',
   testing:        './testing',
