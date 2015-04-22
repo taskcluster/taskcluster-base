@@ -26,6 +26,7 @@
     "superagent-promise":               "0.1.2",
     "superagent-hawk":                  "0.0.4",
     "jjv":                              "1.0.2",
+    "fast-azure-storage":               "0.1.0",
     "azure-table-node":                 "1.4.1",
     "aws-sdk":                          "2.0.15",
     "aws-sdk-promise":                  "0.0.0",
