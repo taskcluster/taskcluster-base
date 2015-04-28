@@ -185,6 +185,8 @@ var Exchanges = function(options) {
     exchangePrefix:       '',
     durableExchanges:     true
   };
+  assert(options.title,       "title must be provided");
+  assert(options.description, "description must be provided");
   this.configure(options);
 };
 
