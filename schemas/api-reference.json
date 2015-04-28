@@ -64,6 +64,15 @@
             "type":           "string",
             "description":    "Name of the `function` this is a stable identifier for use in auto-generated client libraries"
           },
+          "stability": {
+            "title":          "Stability-Level",
+            "description":    "Stability level of the API, refer to documentation for details on these levels.",
+            "enum": [
+              "deprecated", "experimental",
+              "unstable", "stable",
+              "frozen", "locked"
+            ]
+          },
           "scopes": {
             "type":           "array",
             "description":    "List of scope-sets of which the client must satisfy at least one of the sets of scopes. Not provided if authentication isn't required.",
@@ -97,7 +106,8 @@
         },
         "additionalProperties":   false,
         "required": [
-          "type", "method", "route", "args", "name", "title", "description"
+          "type", "method", "route", "args",
+          "name", "stability", "title", "description"
         ]
       }
     }
