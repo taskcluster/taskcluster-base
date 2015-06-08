@@ -11,21 +11,7 @@ var aws           = require('aws-sdk-promise');
 var amqplib       = require('amqplib');
 var events        = require('events');
 var util          = require('util');
-var stats         = require('./stats');
-
-/** Exchange reports for statistics */
-var ExchangeReports = new stats.Series({
-  name:           'ExchangeReports',
-  columns: {
-    component:    stats.types.String, // Component name (e.g. 'queue')
-    process:      stats.types.String, // Process name (e.g. 'server')
-    duration:     stats.types.Number, // Time it took to send the message
-    routingKeys:  stats.types.Number, // 1 + number CCed routing keys
-    payloadSize:  stats.types.Number, // Size of message bytes
-    exchange:     stats.types.String, // true || false
-    error:        stats.types.String  // true || false
-  }
-});
+var series        = require('./lib/series');
 
 /** Class for publishing to a set of declared exchanges */
 var Publisher = function(conn, channel, entries, exchangePrefix, options) {
@@ -39,7 +25,7 @@ var Publisher = function(conn, channel, entries, exchangePrefix, options) {
   if (options.drain) {
     assert(options.component, "component name for statistics is required");
     assert(options.process,   "process name for statistics is required");
-    this._reporter = ExchangeReports.reporter(options.drain);
+    this._reporter = series.ExchangeReports.reporter(options.drain);
   }
 
   var that = this;

@@ -13,7 +13,7 @@ _.forIn({
   AzureAgent:     './lib/azureagent',
   Exchanges:      './exchanges',
   testing:        './testing',
-  stats:          './stats',
+  stats:          './lib/stats',
   utils:          './utils'
 }, function(module, name) {
   Object.defineProperty(exports, name, {
