@@ -5,7 +5,8 @@
   "description":  "Common modules for taskcluster components",
   "license":      "MPL-2.0",
   "scripts": {
-    "test":   "./test/runtests.sh"
+    "test-local":   "./test/runtests.sh local",
+    "test":   "./test/runtests.sh full"
   },
   "repository": {
     "type":   "git",
