@@ -20,6 +20,7 @@ local_tests=(
   test/api/validate_test.js
   test/api/noncemanager_test.js
   test/app_test.js
+  test/scopematch_test.js
   test/exchanges_test.js
   test/testing/localapp_test.js
   test/testing/localapp2_test.js
