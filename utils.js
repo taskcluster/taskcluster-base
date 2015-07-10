@@ -61,7 +61,6 @@ exports.scopeMatch = function(scopePatterns, scopesets) {
   assert(scopesets instanceof Array, "scopesets must be a string or an array");
   return scopesets.some(function(scopeset) {
     assert(scopesets instanceof Array, "scopeset must be a string or an array");
-    assert(scopeset.length > 0, "scopeset must have at least one element");
     return scopeset.every(function(scope) {
       return scopePatterns.some(function(pattern) {
         if (scope === pattern) {
