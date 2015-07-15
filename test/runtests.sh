@@ -18,6 +18,7 @@ local_tests=(
   test/api/auth_test.js
   test/api/route_test.js
   test/api/validate_test.js
+  test/api/schemaprefix_test.js
   test/api/noncemanager_test.js
   test/app_test.js
   test/scopematch_test.js
@@ -30,6 +31,7 @@ local_tests=(
 
 remote_tests=(
   test/pulsepublisher_test.js
+  test/pulsepublisherschemaprefix_test.js
   test/api/publish_test.js
   test/exchanges_publish_test.js
   test/api/responsetimer_test.js
