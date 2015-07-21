@@ -157,7 +157,8 @@ Publisher.prototype.close = function() {
  * {
  *   title:              "Title of documentation page",
  *   description:        "Description in markdown",
- *   exchangePrefix:     'prefix/'     // For all exchanges declared here
+ *   exchangePrefix:     'prefix/'            // For all exchanges declared here
+ *   schemaPrefix:       "http://schemas...", // Prefix for all schemas
  *   durableExchanges:   true || false // If exchanges are durable
  * }
  *
@@ -169,7 +170,8 @@ var Exchanges = function(options) {
   this._entries = [];
   this._options = {
     exchangePrefix:       '',
-    durableExchanges:     true
+    durableExchanges:     true,
+    schemaPrefix:         ''
   };
   assert(options.title,       "title must be provided");
   assert(options.description, "description must be provided");
@@ -226,6 +228,11 @@ Exchanges.prototype.declare = function(options) {
     assert(typeof(options[key]) === 'string', "Option: '" + key + "' must be " +
            "a string");
   });
+
+  // Prefix schemas if a prefix is declared
+  if (this._options.schemaPrefix) {
+    options.schema = this._options.schemaPrefix + options.schema;
+  }
 
   // Validate routingKey declaration
   assert(options.routingKey instanceof Array,

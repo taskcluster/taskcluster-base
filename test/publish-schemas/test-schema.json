@@ -1,13 +1,13 @@
 {
-  "id":           "http://localhost:4321/test-schema.json#",
+  "id":           "http://localhost:1203/base/test/test-schema.json#",
   "$schema":      "http://json-schema.org/draft-04/schema#",
-  "title":        "test schema",
+  "title":        "test json schema",
   "type":         "object",
   "properties": {
     "value": {
       "type":           "integer",
-      "minimum":        1,
-      "maximum":        10
+      "minimum":        {"$const": "my-constant"},
+      "maximum":        {"$const": "my-constant"}
     }
   },
   "additionalProperties":   false,
