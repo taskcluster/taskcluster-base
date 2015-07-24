@@ -21,7 +21,7 @@
     "stylus":                           "0.48.1",
     "nconf":                            "0.6.9",
     "promise":                          "6.1.0",
-    "lodash":                           "2.4.1",
+    "lodash":                           "^3.0.0",
     "debug":                            "2.0.0",
     "superagent":                       "0.18.2",
     "superagent-promise":               "0.1.2",
@@ -44,7 +44,7 @@
     "marked":                           "0.3.2",
     "amqplib":                          "0.3.2",
     "express-sslify":                   "0.1.0",
-    "js-yaml":                          "3.2.2",
+    "js-yaml":                          "^3.3.0",
     "url-join":                         "0.0.1",
     "usage":                            "^0.7.0",
     "hoek":                             "2.x.x",
@@ -54,6 +54,7 @@
     "cryptiles":                        "^2.0.4"
   },
   "devDependencies": {
-    "mocha":                            "2.0.1"
+    "mocha":                            "2.0.1",
+    "assume":                           "^1.0.0"
   }
 }
