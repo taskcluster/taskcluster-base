@@ -66,11 +66,11 @@
           },
           "stability": {
             "title":          "Stability-Level",
-            "description":    "Stability level of the API, refer to documentation for details on these levels.",
+            "description":    "Stability level of the API",
             "enum": [
-              "deprecated", "experimental",
-              "unstable", "stable",
-              "frozen", "locked"
+              "deprecated",
+              "experimental",
+              "stable"
             ]
           },
           "scopes": {
