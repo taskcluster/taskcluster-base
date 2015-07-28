@@ -49,9 +49,9 @@ exports.validateScopeSets = function(scopesets) {
  */
 exports.scopeMatch = function(scopePatterns, scopesets) {
   exports.validateScopeSets(scopesets);
-  if (typeof(scopePatterns) == 'string') {
-    scopePatterns = [scopePatterns];
-  }
+  assert(scopePatterns instanceof Array && scopePatterns.every(function(scope) {
+    return typeof(scope) === 'string';
+  }), "scopes must be an array of strings");
   return scopesets.some(function(scopeset) {
     return scopeset.every(function(scope) {
       return scopePatterns.some(function(pattern) {
