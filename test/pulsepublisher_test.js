@@ -18,8 +18,8 @@ suite("Exchanges (Publish on Pulse)", function() {
 
   if (!cfg.get('influxdb:connectionString') &&
       !cfg.get('pulse:credentials:password')) {
-    console.log("Skipping 'pulse publisher', missing config file: " +
-                "taskcluster-base-test.conf.json");
+    throw new Error("Skipping 'pulse publisher', missing config file: " +
+                    "taskcluster-base-test.conf.json");
     return;
   }
 

@@ -18,6 +18,16 @@ Code Conventions
  * Return promises whenever asynchronous I/O is needed
 
 
+Testing
+-------
+
+Some of the tests for this package require external access and credentials.
+These tests are run by the usual `npm test`.  To get a copy of the credentials,
+contact Jonas.
+
+To run just the tests which do not require external access or credentials, use
+`npm run-script test-local`.
+
 Metadata Publication
 --------------------
 _We publish metadata for consumption by auto-generated clients and docs._

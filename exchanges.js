@@ -11,21 +11,7 @@ var aws           = require('aws-sdk-promise');
 var amqplib       = require('amqplib');
 var events        = require('events');
 var util          = require('util');
-var stats         = require('./stats');
-
-/** Exchange reports for statistics */
-var ExchangeReports = new stats.Series({
-  name:           'ExchangeReports',
-  columns: {
-    component:    stats.types.String, // Component name (e.g. 'queue')
-    process:      stats.types.String, // Process name (e.g. 'server')
-    duration:     stats.types.Number, // Time it took to send the message
-    routingKeys:  stats.types.Number, // 1 + number CCed routing keys
-    payloadSize:  stats.types.Number, // Size of message bytes
-    exchange:     stats.types.String, // true || false
-    error:        stats.types.String  // true || false
-  }
-});
+var series        = require('./lib/series');
 
 /** Class for publishing to a set of declared exchanges */
 var Publisher = function(conn, channel, entries, exchangePrefix, options) {
@@ -39,7 +25,7 @@ var Publisher = function(conn, channel, entries, exchangePrefix, options) {
   if (options.drain) {
     assert(options.component, "component name for statistics is required");
     assert(options.process,   "process name for statistics is required");
-    this._reporter = ExchangeReports.reporter(options.drain);
+    this._reporter = series.ExchangeReports.reporter(options.drain);
   }
 
   var that = this;
@@ -171,7 +157,8 @@ Publisher.prototype.close = function() {
  * {
  *   title:              "Title of documentation page",
  *   description:        "Description in markdown",
- *   exchangePrefix:     'prefix/'     // For all exchanges declared here
+ *   exchangePrefix:     'prefix/'            // For all exchanges declared here
+ *   schemaPrefix:       "http://schemas...", // Prefix for all schemas
  *   durableExchanges:   true || false // If exchanges are durable
  * }
  *
@@ -183,8 +170,11 @@ var Exchanges = function(options) {
   this._entries = [];
   this._options = {
     exchangePrefix:       '',
-    durableExchanges:     true
+    durableExchanges:     true,
+    schemaPrefix:         ''
   };
+  assert(options.title,       "title must be provided");
+  assert(options.description, "description must be provided");
   this.configure(options);
 };
 
@@ -238,6 +228,11 @@ Exchanges.prototype.declare = function(options) {
     assert(typeof(options[key]) === 'string', "Option: '" + key + "' must be " +
            "a string");
   });
+
+  // Prefix schemas if a prefix is declared
+  if (this._options.schemaPrefix) {
+    options.schema = this._options.schemaPrefix + options.schema;
+  }
 
   // Validate routingKey declaration
   assert(options.routingKey instanceof Array,

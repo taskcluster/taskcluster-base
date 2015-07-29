@@ -1,11 +1,12 @@
 {
   "name":         "taskcluster-base",
-  "version":      "0.7.22",
+  "version":      "0.8.0",
   "author":       "Jonas Finnemann Jensen <jopsen@gmail.com>",
   "description":  "Common modules for taskcluster components",
   "license":      "MPL-2.0",
   "scripts": {
-    "test":   "./test/runtests.sh"
+    "test-local":   "./test/runtests.sh local",
+    "test":   "./test/runtests.sh full"
   },
   "repository": {
     "type":   "git",
@@ -26,6 +27,7 @@
     "superagent-promise":               "0.1.2",
     "superagent-hawk":                  "0.0.4",
     "jjv":                              "1.0.2",
+    "fast-azure-storage":               "^0.1.2",
     "azure-table-node":                 "1.4.1",
     "aws-sdk":                          "2.0.15",
     "aws-sdk-promise":                  "0.0.0",
@@ -44,7 +46,7 @@
     "express-sslify":                   "0.1.0",
     "js-yaml":                          "3.2.2",
     "url-join":                         "0.0.1",
-    "usage":                            "0.6.0",
+    "usage":                            "^0.7.0",
     "hoek":                             "2.x.x",
     "taskcluster-client":               "0.18.1",
     "json-stable-stringify":            "1.0.0",
