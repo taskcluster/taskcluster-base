@@ -37,10 +37,12 @@
         "properties": {
           "type": {
             "description":    "Type of entry, currently only `function`.",
+            "type":           "string",
             "enum":           ["function"]
           },
           "method": {
             "description":    "HTTP method (verb) used to access the function",
+            "type":           "string",
             "enum": [
               "get", "post", "put", "head", "delete", "options", "trace",
               "copy", "lock", "mkcol", "move", "purge", "propfind", "proppatch",
@@ -67,6 +69,7 @@
           "stability": {
             "title":          "Stability-Level",
             "description":    "Stability level of the API",
+            "type":           "string",
             "enum": [
               "deprecated",
               "experimental",

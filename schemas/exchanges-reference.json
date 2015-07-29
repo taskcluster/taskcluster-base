@@ -34,6 +34,7 @@
         "properties": {
           "type": {
             "description":    "Type of entry, currently only `topic-exchange`.",
+            "type":           "string",
             "enum":           ["topic-exchange"]
           },
           "exchange": {
