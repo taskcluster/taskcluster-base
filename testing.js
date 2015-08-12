@@ -443,6 +443,8 @@ var createClientLoader = function(clients) {
   };
 };
 
+
+
 /**
  * Create an mock authentication server for testing
  *
@@ -490,7 +492,17 @@ var createMockAuthServer = function(options) {
         authBaseUrl:    options.authBaseUrl
       },
       validator:      validator,
-      clientLoader:   createClientLoader(options.clients)
+      signatureValidator: base.API.makeSignatureValidator({
+        clientLoader: function(clientId) {
+          var client = _.find(options.clients, {
+            clientId: clientId
+          });
+          if (!client) {
+            throw new Error("No such clientId: " + clientId);
+          }
+          return client;
+        }
+      })
     });
 
     // Mount router
