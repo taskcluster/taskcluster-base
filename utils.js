@@ -25,7 +25,7 @@ exports.listFolder = function(folder, fileList) {
  * of a scope-set.
  */
 exports.validateScopeSets = function(scopesets) {
-  var msg = "scopes must be an array of arrays of strings (disjunctive normal form)";
+  var msg = "scopes must be an array of arrays of strings (disjunctive form)";
   assert(Array.isArray(scopesets), msg);
   assert(scopesets.every(function(conj) {
       return Array.isArray(conj) && conj.every(function(scope) {
@@ -37,8 +37,8 @@ exports.validateScopeSets = function(scopesets) {
 /**
  * Auxiliary function to check if scopePatterns satisfies a scope-set
  *
- * Note that scope-set is an array of arrays of strings on disjunctive normal
- * form without negation. For example:
+ * Note that scope-set is an array of arrays of strings on disjunctive form
+ * without negation. For example:
  *  [['a', 'b'], ['c']]
  *
  * Is satisfied if either,
