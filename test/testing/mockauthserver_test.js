@@ -4,6 +4,7 @@ suite('testing.createMockAuthServer', function() {
   require('superagent-hawk')(require('superagent'));
   var request   = require('superagent-promise');
   var assert    = require('assert');
+  var hawk      = require('hawk');
 
   var helper  = require('../entity/helper');
   var cfg = helper.loadConfig();
@@ -49,6 +50,24 @@ suite('testing.createMockAuthServer', function() {
         key:        'test-token',
         algorithm:  'sha256'
       })
+      .end().then(function(res) {
+        assert(res.ok, "Failed to get credentials");
+      });
+  });
+
+  test("Can getCredentials w. auth:credentials (bewit)", function() {
+    var reqUrl = 'http://localhost:1207/v1/client/authed-client/credentials';
+    var bewit = (hawk.client.getBewit || hawk.client.bewit)(reqUrl, {
+      credentials: {
+        id:         'authed-client',
+        key:        'test-token',
+        algorithm:  'sha256'
+      },
+      ttlSec:       15 * 60,
+      ext:          undefined
+    });
+    return request
+      .get(reqUrl + '?bewit=' + bewit)
       .end().then(function(res) {
         assert(res.ok, "Failed to get credentials");
       });
