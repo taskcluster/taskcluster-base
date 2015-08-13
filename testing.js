@@ -492,7 +492,7 @@ var createMockAuthServer = function(options) {
         authBaseUrl:    options.authBaseUrl
       },
       validator:      validator,
-      signatureValidator: base.API.makeSignatureValidator({
+      signatureValidator: base.API.createSignatureValidator({
         clientLoader: function(clientId) {
           var client = _.find(options.clients, {
             clientId: clientId
