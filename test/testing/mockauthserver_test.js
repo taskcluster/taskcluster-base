@@ -56,16 +56,20 @@ suite('testing.createMockAuthServer', function() {
   });
 
   test("Can getCredentials w. auth:credentials (authorizedScopes)", function() {
-    return request
-      .get('http://localhost:1207/v1/client/authed-client/credentials')
-      .hawk({
+    var reqUrl = 'http://localhost:1207/v1/client/authed-client/credentials';
+    var header = hawk.client.header(reqUrl, 'GET', {
+      credentials: {
         id:         'authed-client',
         key:        'test-token',
         algorithm:  'sha256',
-        ext: new Buffer(JSON.stringify({
-          authorizedScopes: ['auth:credentials']
-        })).toString('base64')
-      })
+      },
+      ext: new Buffer(JSON.stringify({
+        authorizedScopes: ['auth:credentials']
+      })).toString('base64')
+    });
+    return request
+      .get(reqUrl)
+      .set('Authorization', header.field)
       .end().then(function(res) {
         assert(res.ok, "Failed to get credentials");
       });
