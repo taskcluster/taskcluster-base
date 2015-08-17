@@ -360,7 +360,7 @@ mockAuthApi.declare({
 
 /** Declare method for signature validation */
 mockAuthApi.declare({
-  method:       'get',
+  method:       'post',
   route:        '/authenticate-hawk',
   name:         'authenticateHawk',
   title:        "Validate Hawk Signature",
