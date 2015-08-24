@@ -55,6 +55,42 @@ suite('testing.createMockAuthServer', function() {
       });
   });
 
+  test("Can getCredentials w. auth:credentials (payload hash)", function() {
+    var reqUrl = 'http://localhost:1207/v1/client/authed-client/credentials';
+    var header = hawk.client.header(reqUrl, 'GET', {
+      credentials: {
+        id:         'authed-client',
+        key:        'test-token',
+        algorithm:  'sha256',
+      },
+      payload:      ''
+    });
+    return request
+      .get(reqUrl)
+      .set('Authorization', header.field)
+      .end().then(function(res) {
+        assert(res.ok, "Failed to get credentials");
+      });
+  });
+
+  test("Can getCredentials w. auth:credentials (invalid hash)", function() {
+    var reqUrl = 'http://localhost:1207/v1/client/authed-client/credentials';
+    var header = hawk.client.header(reqUrl, 'GET', {
+      credentials: {
+        id:         'authed-client',
+        key:        'test-token',
+        algorithm:  'sha256',
+      },
+      payload:      'wrong-payload'
+    });
+    return request
+      .get(reqUrl)
+      .set('Authorization', header.field)
+      .end().then(function(res) {
+        assert(!res.ok, "Expected an error");
+      });
+  });
+
   test("Can getCredentials w. auth:credentials (authorizedScopes)", function() {
     var reqUrl = 'http://localhost:1207/v1/client/authed-client/credentials';
     var header = hawk.client.header(reqUrl, 'GET', {
