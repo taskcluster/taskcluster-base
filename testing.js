@@ -525,7 +525,11 @@ var createMockAuthServer = function(options) {
     app.use('/v1', router);
 
     // Create server
-    return app.createServer();
+    return app.createServer().then(function(server) {
+      // Time out connections after 500 ms, prevents tests from hanging
+      server.setTimeout(500);
+      return server;
+    });
   });
 };
 
