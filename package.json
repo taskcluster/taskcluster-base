@@ -50,7 +50,8 @@
     "hoek":                             "2.x.x",
     "taskcluster-client":               "0.18.1",
     "json-stable-stringify":            "1.0.0",
-    "buffertools":                      "2.1.2"
+    "buffertools":                      "2.1.2",
+    "cryptiles":                        "^2.0.4"
   },
   "devDependencies": {
     "mocha":                            "2.0.1"
