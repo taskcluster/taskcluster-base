@@ -52,6 +52,7 @@ remote_tests=(
   test/entity/jsontype_test.js
   test/entity/slugidarray_test.js
   test/entity/texttype_test.js
+  test/entity/signentities_test.js
   test/entity/sas_test.js
   test/entity/auth_test.js
   test/legacyentity_test.js
