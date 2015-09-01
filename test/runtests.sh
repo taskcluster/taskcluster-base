@@ -53,9 +53,10 @@ remote_tests=(
   test/entity/slugidarray_test.js
   test/entity/texttype_test.js
   test/entity/encryptedblobtype_test.js
-  test/entity/encryptedtexttypes_test.js
+  test/entity/encryptedtexttype_test.js
   test/entity/encryptedjsontype_test.js
   test/entity/signentities_test.js
+  test/entity/encryptedprops_test.js
   test/entity/sas_test.js
   test/entity/auth_test.js
   test/legacyentity_test.js
