@@ -52,7 +52,7 @@ suite("config", function() {
         ENV_TRUE:         'true',
         ENV_FALSE:        'false',
         ENV_JSON:         '{"test": 42}',
-        ENV_LIST:         'abc def'
+        ENV_LIST:         'abc def "qouted string" \'\''
       }
     });
 
@@ -65,7 +65,7 @@ suite("config", function() {
       soTrue:     true,
       unTrue:     false,
       json:       {test: 42},
-      list:       ["abc", "def"]
+      list:       ["abc", "def", "qouted string", ""]
     });
   });
 });

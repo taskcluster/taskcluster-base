@@ -14,6 +14,7 @@ esac
 # tests that can run locally
 local_tests=(
   test/config_test.js
+  test/config/config_test.js
   test/validator_test.js
   test/api/auth_test.js
   test/api/route_test.js
@@ -67,7 +68,7 @@ remote_tests=(
 if $local_only; then
     tests=(${local_tests[@]})
 else
-    tests=(${remote_tests[@]} ${local_tests[@]})
+    tests=(${local_tests[@]} ${remote_tests[@]})
 fi
 
 mocha ${tests[@]}
