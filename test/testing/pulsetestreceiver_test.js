@@ -9,7 +9,7 @@ suite('testing.PulseTestReceiver', function() {
   var taskcluster   = require('taskcluster-client')
 
   // Load necessary configuration
-  var cfg = base.config({
+  var cfg = base.legacyConfig({
     filename:               'taskcluster-base-test'
   });
 

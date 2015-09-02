@@ -4,7 +4,8 @@
 // 'testing' and loading code actually takes time.
 var _ = require('lodash');
 _.forIn({
-  config:         './config',
+  legacyConfig:   './config',
+  config:         './lib/config',
   app:            './app',
   validator:      './validator',
   API:            './api',

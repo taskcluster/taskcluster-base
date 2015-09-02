@@ -4,7 +4,7 @@ suite("Exchanges", function() {
   var aws     = require('aws-sdk-promise');
 
   test("publish", function() {
-    var cfg = base.config({
+    var cfg = base.legacyConfig({
       envs: [
         'aws_accessKeyId',
         'aws_secretAccessKey',

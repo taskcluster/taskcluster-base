@@ -7,7 +7,7 @@ suite("LegacyEntity", function() {
   var debug   = require('debug')('base:test:entity');
 
   // Load test configuration
-  var cfg = base.config({
+  var cfg = base.legacyConfig({
     envs: [
       'azure_accountName',
       'azure_accountKey',

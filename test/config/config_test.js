@@ -1,10 +1,10 @@
 suite("config", function() {
-  var config  = require('../../lib/config');
+  var base    = require('../../');
   var path    = require('path');
   var assume  = require('assume');
 
   test("load yaml", function() {
-    var cfg = config({
+    var cfg = base.config({
       files: [
         path.join(__dirname, 'test.yml')
       ]
@@ -16,7 +16,7 @@ suite("config", function() {
   });
 
   test("load profile", function() {
-    var cfg = config({
+    var cfg = base.config({
       files: [
         path.join(__dirname, 'test-profile.yml')
       ],
@@ -29,7 +29,7 @@ suite("config", function() {
   });
 
   test("load profile (default)", function() {
-    var cfg = config({
+    var cfg = base.config({
       files: [
         path.join(__dirname, 'test-profile.yml')
       ]
@@ -41,7 +41,7 @@ suite("config", function() {
   });
 
   test("load !env", function() {
-    var cfg = config({
+    var cfg = base.config({
       files: [
         path.join(__dirname, 'test-env.yml')
       ],

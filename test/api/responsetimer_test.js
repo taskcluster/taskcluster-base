@@ -9,7 +9,7 @@ suite("api/responsetimer", function() {
   var path            = require('path');
 
   // Load necessary configuration
-  var cfg = base.config({
+  var cfg = base.legacyConfig({
     envs: [
       'influxdb_connectionString',
     ],

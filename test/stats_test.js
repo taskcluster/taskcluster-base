@@ -6,7 +6,7 @@ suite('stats', function() {
   var debug         = require('debug')('test:stats_test');
 
   // Load necessary configuration
-  var cfg = base.config({
+  var cfg = base.legacyConfig({
     envs: [
       'influxdb_connectionString',
     ],

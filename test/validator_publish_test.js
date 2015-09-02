@@ -7,7 +7,7 @@ suite("validator", function() {
 
 
   test("test publish", function() {
-    var cfg = base.config({
+    var cfg = base.legacyConfig({
       envs: [
         'aws_accessKeyId',
         'aws_secretAccessKey',

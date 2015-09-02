@@ -9,7 +9,7 @@ suite("Exchanges (Publish on Pulse w. schemaPrefix)", function() {
   var amqplib  = require('amqplib');
 
   // Load necessary configuration
-  var cfg = base.config({
+  var cfg = base.legacyConfig({
     envs: [
       'influxdb_connectionString',
     ],
