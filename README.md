@@ -1,6 +1,11 @@
 TaskCluster Base Modules
 ========================
 
+<img src="https://tools.taskcluster.net/lib/assets/taskcluster-120.png" />
+
+[![Build Status](https://travis-ci.org/taskcluster/taskcluster-base.svg?branch=master)](http://travis-ci.org/taskcluster/taskcluster-base)
+[![License](https://img.shields.io/badge/license-MPL%202.0-orange.svg)](https://github.com/taskcluster/taskcluster-base/blob/master/LICENSE)
+
 A collection of common modules used many taskcluster components.
 
 Most of the modules in this _base_ collection can be instantiated by providing
