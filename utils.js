@@ -21,11 +21,12 @@ exports.listFolder = function(folder, fileList) {
 };
 
 /**
- * Determine whether a scope is valid.  Scopes must be strings of printable,
- * nonwhitespace ASCII characters or space.
+ * Determine whether a scope is valid.  Scopes must be strings of ASCII
+ * characters 0x20-0x7e (printable characters, including space but no other
+ * whitespace)
  */
 
-var _validScope = /^[-a-zA-Z0-9!"#$%&\'()*+,./:;<=>?@[\\\]^_`{|}~ ]*$/;
+var _validScope = /^[\x20-\x7e]*$/;
 exports.validScope = function(scope) {
     return typeof(scope) == 'string' && _validScope.test(scope);
 };
