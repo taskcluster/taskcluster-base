@@ -10,6 +10,7 @@ _.forIn({
   API:            './api',
   Entity:         './lib/entity',
   LegacyEntity:   './lib/legacyentity',
+  loader:         'taskcluster-lib-loader',
   AzureAgent:     './lib/azureagent',
   Exchanges:      './exchanges',
   testing:        './testing',
