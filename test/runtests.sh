@@ -13,7 +13,6 @@ esac
 
 # tests that can run locally
 local_tests=(
-  test/config_test.js
   test/validator_test.js
   test/api/auth_test.js
   test/api/route_test.js
@@ -38,7 +37,6 @@ remote_tests=(
   test/testing/pulsetestreceiver_test.js
   test/entity/create_load_test.js
   test/entity/context_test.js
-  test/stats_test.js
   test/entity/modify_test.js
   test/entity/reload_test.js
   test/testing/mockauthserver_test.js
