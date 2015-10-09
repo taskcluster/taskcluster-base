@@ -4,7 +4,7 @@
 // 'testing' and loading code actually takes time.
 var _ = require('lodash');
 _.forIn({
-  config:         './config',
+  config:         'taskcluster-lib-config',
   app:            './app',
   validator:      './validator',
   API:            './api',
@@ -14,7 +14,7 @@ _.forIn({
   AzureAgent:     './lib/azureagent',
   Exchanges:      './exchanges',
   testing:        './testing',
-  stats:          './lib/stats',
+  stats:          'taskcluster-lib-config',
   utils:          './utils'
 }, function(module, name) {
   Object.defineProperty(exports, name, {
