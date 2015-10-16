@@ -15,6 +15,7 @@ _.forIn({
   Exchanges:      './exchanges',
   testing:        './testing',
   stats:          'taskcluster-lib-config',
+  scopes:         'taskcluster-lib-scopes',
   utils:          './utils'
 }, function(module, name) {
   Object.defineProperty(exports, name, {

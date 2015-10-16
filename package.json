@@ -50,6 +50,7 @@
     "taskcluster-client": "0.22.6",
     "taskcluster-lib-config": "^0.8.8",
     "taskcluster-lib-loader": "0.0.7",
+    "taskcluster-lib-scopes": "^0.8.8",
     "taskcluster-lib-stats": "^0.8.7",
     "url-join": "0.0.1",
     "usage": "^0.7.0",
