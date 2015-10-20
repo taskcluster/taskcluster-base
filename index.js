@@ -14,7 +14,7 @@ _.forIn({
   AzureAgent:     './lib/azureagent',
   Exchanges:      './exchanges',
   testing:        './testing',
-  stats:          'taskcluster-lib-config',
+  stats:          'taskcluster-lib-stats',
   scopes:         'taskcluster-lib-scopes',
   utils:          './utils'
 }, function(module, name) {
