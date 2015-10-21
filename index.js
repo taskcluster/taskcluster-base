@@ -4,7 +4,7 @@
 // 'testing' and loading code actually takes time.
 var _ = require('lodash');
 _.forIn({
-  config:         'taskcluster-lib-config',
+  config:         'typed-env-config',
   app:            './app',
   validator:      './validator',
   API:            './api',

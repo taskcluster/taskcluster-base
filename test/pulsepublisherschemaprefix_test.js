@@ -1,6 +1,7 @@
 suite("Exchanges (Publish on Pulse w. schemaPrefix)", function() {
   var assert  = require('assert');
   var base    = require('../');
+  var config  = require('taskcluster-lib-config');
   var path    = require('path');
   var fs      = require('fs');
   var debug   = require('debug')('base:test:publish-pulse');
@@ -9,7 +10,7 @@ suite("Exchanges (Publish on Pulse w. schemaPrefix)", function() {
   var amqplib  = require('amqplib');
 
   // Load necessary configuration
-  var cfg = base.config({
+  var cfg = config({
     envs: [
       'influxdb_connectionString',
     ],
