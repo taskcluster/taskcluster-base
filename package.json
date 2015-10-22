@@ -16,6 +16,7 @@
     "amqplib": "0.3.2",
     "aws-sdk": "2.0.15",
     "aws-sdk-promise": "0.0.0",
+    "azure-entities": "^0.8.7",
     "azure-table-node": "1.4.1",
     "body-parser": "1.13.3",
     "buffertools": "2.1.2",
