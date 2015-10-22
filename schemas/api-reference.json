@@ -81,10 +81,11 @@
             "description":    "List of scope-sets of which the client must satisfy at least one of the sets of scopes. Not provided if authentication isn't required.",
             "items": {
               "type":         "array",
-              "description":  "A set of scopes that grants access if all the scopes in the set is satisfied",
+              "description":  "A set of scopes that grants access if all the scopes in the set is satisfied.  Scopes must be composed of printable ASCII characters and spaces.",
               "items": {
                 "type":         "string",
-                "description":  "Scope identifier"
+                "description":  "Scope identifier",
+                "pattern":      "^[\x20-\x7e]*"
               }
             }
           },
