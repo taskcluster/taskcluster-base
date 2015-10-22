@@ -1,9 +1,10 @@
 var base    = require('../../');
+var config  = require('taskcluster-lib-config');
 
 /** Load configuration */
 var loadConfig = function() {
   // Load test configuration
-  var cfg = base.config({
+  var cfg = config({
     envs: [
       'azure_accountName',
       'azure_accountKey',

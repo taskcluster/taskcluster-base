@@ -49,15 +49,16 @@
     "superagent-hawk": "0.0.4",
     "superagent-promise": "0.1.2",
     "taskcluster-client": "0.22.6",
-    "taskcluster-lib-config": "^0.8.8",
     "taskcluster-lib-loader": "0.0.7",
     "taskcluster-lib-scopes": "^0.8.8",
     "taskcluster-lib-stats": "^0.8.7",
+    "typed-env-config": "^0.10.0",
     "url-join": "0.0.1",
     "usage": "^0.7.0",
     "uuid": "1.4.1"
   },
   "devDependencies": {
+    "taskcluster-lib-config": "^0.8.8",
     "mocha": "2.0.1"
   }
 }
