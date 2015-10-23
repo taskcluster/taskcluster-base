@@ -9,7 +9,7 @@ _.forIn({
   validator:      './validator',
   API:            './api',
   Entity:         'azure-entities',
-  LegacyEntity:   './lib/legacyentity',
+  LegacyEntity:   'taskcluster-lib-legacyentities',
   loader:         'taskcluster-lib-loader',
   AzureAgent:     './lib/azureagent',
   Exchanges:      './exchanges',
