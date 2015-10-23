@@ -85,7 +85,7 @@
               "items": {
                 "type":         "string",
                 "description":  "Scope identifier",
-                "pattern":      "^[\x20-\x7e]*"
+                "pattern":      "^[\\x20-\\x7e]*"
               }
             }
           },
