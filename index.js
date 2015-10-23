@@ -18,6 +18,7 @@ _.forIn({
   scopes:         'taskcluster-lib-scopes',
   utils:          './utils'
 }, function(module, name) {
+  require.resolve(module);
   Object.defineProperty(exports, name, {
     enumerable: true,
     get:        function() { return require(module); }
