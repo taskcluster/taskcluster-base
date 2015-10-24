@@ -7,6 +7,14 @@ var scopes      = require('taskcluster-lib-scopes');
 
 /** List files in folder recursively */
 exports.listFolder = function(folder, fileList) {
+  console.log('**********************');
+  console.log('**    DEPRECATED!   **');
+  console.log('**********************');
+  console.log('');
+  console.log('******************************************************');;
+  console.log('* You are calling taskcluster-base.utils.listFolder  *');
+  console.log('* which is deprecated and will be removed very soon. *');
+  console.log('******************************************************');;
   if (fileList == undefined) {
     fileList = [];
   }
