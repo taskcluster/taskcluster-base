@@ -34,7 +34,6 @@ remote_tests=(
   test/api/responsetimer_test.js
   test/testing/pulsetestreceiver_test.js
   test/testing/mockauthserver_test.js
-  test/legacyentity_test.js
   test/validator_publish_test.js
 )
 
