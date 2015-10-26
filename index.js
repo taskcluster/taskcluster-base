@@ -6,7 +6,7 @@ var _ = require('lodash');
 _.forIn({
   config:         'typed-env-config',
   app:            './app',
-  validator:      './validator',
+  validator:      'schema-validator-publisher',
   API:            './api',
   Entity:         'azure-entities',
   LegacyEntity:   'taskcluster-lib-legacyentities',
