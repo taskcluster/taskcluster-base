@@ -13,7 +13,6 @@ esac
 
 # tests that can run locally
 local_tests=(
-  test/validator_test.js
   test/api/auth_test.js
   test/api/route_test.js
   test/api/validate_test.js
@@ -34,7 +33,6 @@ remote_tests=(
   test/api/responsetimer_test.js
   test/testing/pulsetestreceiver_test.js
   test/testing/mockauthserver_test.js
-  test/validator_publish_test.js
 )
 
 # tests that require external services and credentials
