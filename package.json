@@ -1,6 +1,6 @@
 {
   "name": "taskcluster-base",
-  "version": "0.8.7",
+  "version": "0.8.8",
   "author": "Jonas Finnemann Jensen <jopsen@gmail.com>",
   "description": "Common modules for taskcluster components",
   "license": "MPL-2.0",
@@ -16,7 +16,7 @@
     "amqplib": "^0.4.0",
     "aws-sdk": "2.0.15",
     "aws-sdk-promise": "0.0.0",
-    "azure-entities": "^0.8.7",
+    "azure-entities": "^0.8.8",
     "azure-table-node": "1.4.1",
     "body-parser": "1.13.3",
     "cryptiles": "^2.0.4",
