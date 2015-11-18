@@ -20,8 +20,6 @@ local_tests=(
   test/api/noncemanager_test.js
   test/app_test.js
   test/exchanges_test.js
-  test/testing/localapp_test.js
-  test/testing/localapp2_test.js
   test/testing/schemas_test.js
 )
 
