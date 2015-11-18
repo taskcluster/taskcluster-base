@@ -5,15 +5,15 @@
 var _ = require('lodash');
 _.forIn({
   config:         'typed-env-config',
-  app:            './app',
+  app:            'taskcluster-lib-app',
   validator:      'schema-validator-publisher',
-  API:            './api',
+  API:            'taskcluster-lib-api',
   Entity:         'azure-entities',
   LegacyEntity:   'taskcluster-lib-legacyentities',
+  AzureAgent:     'taskcluster-lib-legacyentities/azureagent',
   loader:         'taskcluster-lib-loader',
-  AzureAgent:     './lib/azureagent',
-  Exchanges:      './exchanges',
-  testing:        './testing',
+  Exchanges:      'pulse-publisher',
+  testing:        'taskcluster-lib-testing',
   stats:          'taskcluster-lib-stats',
   scopes:         'taskcluster-lib-scopes',
   utils:          './utils'
