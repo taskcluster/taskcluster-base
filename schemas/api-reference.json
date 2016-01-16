@@ -106,6 +106,14 @@
           "description": {
             "type":           "string",
             "description":    "Description (ie. documentation) for the API entry"
+          },
+          "query": {
+            "type":           "array",
+            "description":    "Optional query string parameters",
+            "items": {
+              "type":         "string",
+              "description":  "Name of query string parameter"
+            }
           }
         },
         "additionalProperties":   false,
