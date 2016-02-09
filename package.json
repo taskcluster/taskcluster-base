@@ -1,6 +1,6 @@
 {
   "name": "taskcluster-base",
-  "version": "0.10.2",
+  "version": "0.10.3",
   "author": "Jonas Finnemann Jensen <jopsen@gmail.com>",
   "description": "Common modules for taskcluster components",
   "license": "MPL-2.0",
@@ -17,7 +17,7 @@
     "pulse-publisher": "^0.8.8",
     "schema-validator-publisher": "^0.8.7",
     "taskcluster-client": "0.23.4",
-    "taskcluster-lib-api": "^0.9.4",
+    "taskcluster-lib-api": "^0.10.0",
     "taskcluster-lib-app": "^0.8.9",
     "taskcluster-lib-legacyentities": "^0.8.7",
     "taskcluster-lib-loader": "^0.1.0",
