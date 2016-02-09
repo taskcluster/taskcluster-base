@@ -26,12 +26,8 @@ Code Conventions
 Testing
 -------
 
-Some of the tests for this package require external access and credentials.
-These tests are run by the usual `npm test`.  To get a copy of the credentials,
-contact Jonas.
-
-To run just the tests which do not require external access or credentials, use
-`npm run-script test-local`.
+There are no tests in this module other than assuring that everything can
+be imported. Run with ```npm test``` as per usual.
 
 Metadata Publication
 --------------------
