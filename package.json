@@ -1,6 +1,6 @@
 {
   "name": "taskcluster-base",
-  "version": "0.10.5",
+  "version": "0.10.6",
   "author": "Jonas Finnemann Jensen <jopsen@gmail.com>",
   "description": "Common modules for taskcluster components",
   "license": "MPL-2.0",
@@ -12,7 +12,7 @@
     "url": "https://github.com/taskcluster/taskcluster-base.git"
   },
   "dependencies": {
-    "azure-entities": "^0.8.8",
+    "azure-entities": "^0.9.1",
     "lodash": "^3.10.1",
     "pulse-publisher": "^0.8.8",
     "schema-validator-publisher": "^0.8.7",
