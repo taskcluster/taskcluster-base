@@ -1,6 +1,6 @@
 {
   "name": "taskcluster-base",
-  "version": "0.10.6",
+  "version": "0.10.7",
   "author": "Jonas Finnemann Jensen <jopsen@gmail.com>",
   "description": "Common modules for taskcluster components",
   "license": "MPL-2.0",
@@ -23,7 +23,7 @@
     "taskcluster-lib-loader": "^0.1.0",
     "taskcluster-lib-scopes": "^0.8.8",
     "taskcluster-lib-stats": "^0.8.7",
-    "taskcluster-lib-testing": "^0.9",
+    "taskcluster-lib-testing": "^0.10.2",
     "typed-env-config": "^0.10.0"
   }
 }
