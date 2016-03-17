@@ -7,7 +7,7 @@ var util = require('util');
 _.forIn({
   config:         'typed-env-config',
   app:            'taskcluster-lib-app',
-  validator:      'schema-validator-publisher',
+  validator:      'taskcluster-lib-validate',
   API:            'taskcluster-lib-api',
   Entity:         'azure-entities',
   loader:         'taskcluster-lib-loader',
