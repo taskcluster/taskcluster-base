@@ -13,6 +13,7 @@ _.forIn({
   loader:         'taskcluster-lib-loader',
   Exchanges:      'pulse-publisher',
   testing:        'taskcluster-lib-testing',
+  monitor:        'taskcluster-lib-monitor',
   stats:          'taskcluster-lib-stats',
   scopes:         'taskcluster-lib-scopes',
 }, function(module, name) {
