@@ -14,7 +14,6 @@ _.forIn({
   Exchanges:      'pulse-publisher',
   testing:        'taskcluster-lib-testing',
   monitor:        'taskcluster-lib-monitor',
-  stats:          'taskcluster-lib-stats',
   scopes:         'taskcluster-lib-scopes',
 }, function(module, name) {
   require.resolve(module);
@@ -30,6 +29,7 @@ _.forIn({
 _.forIn({
   LegacyEntity:   'taskcluster-lib-legacyentities',
   AzureAgent:     'taskcluster-lib-legacyentities/azureagent',
+  stats:          'taskcluster-lib-stats',
   utils:          './utils'
 }, function(module, name) {
   require.resolve(module);
