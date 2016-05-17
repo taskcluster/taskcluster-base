@@ -20,7 +20,7 @@
     "taskcluster-lib-app": "^0.8.9",
     "taskcluster-lib-legacyentities": "^0.8.7",
     "taskcluster-lib-loader": "^0.1.0",
-    "taskcluster-lib-monitor": "^2.0.0",
+    "taskcluster-lib-monitor": "^2.1.0",
     "taskcluster-lib-scopes": "^0.8.8",
     "taskcluster-lib-stats": "^0.8.7",
     "taskcluster-lib-testing": "^0.11.1",
