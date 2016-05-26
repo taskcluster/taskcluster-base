@@ -20,11 +20,11 @@
     "taskcluster-lib-app": "^1.0.0",
     "taskcluster-lib-legacyentities": "^0.8.7",
     "taskcluster-lib-loader": "^1.0.0",
-    "taskcluster-lib-monitor": "^2.1.0",
+    "taskcluster-lib-monitor": "^2.1.1",
     "taskcluster-lib-scopes": "^1.0.0",
     "taskcluster-lib-stats": "^0.8.7",
     "taskcluster-lib-testing": "^1.0.0",
-    "taskcluster-lib-validate": "^1.0.0",
+    "taskcluster-lib-validate": "^1.0.1",
     "typed-env-config": "^0.10.0"
   }
 }
