@@ -27,3 +27,11 @@ notifications:
       - "Change view : %{compare_url}"
       - "Build details : %{build_url}"
       - "Commit message : %{commit_message}"
+deploy:
+  provider: npm
+  email: taskcluster-accounts@mozilla.com
+  api_key:
+    secure: E/5EYAIQ6QKA1zSO3iN9hAZseztdvB0Ucb58IUWiDFRc1mz5KNiJnWy1WaJSNAfzZ6uXvdHjYPoFw/fyMsnev9Cg34pyC12h9VoDOKEXRdWw5qf+50SDEJLG0pfsA5EcEz946P8/GZxMPifuAyBgH4WjIF0Cn+H1NOgeB5Cj
+  on:
+    tags: true
+    repo: taskcluster/taskcluster-base
