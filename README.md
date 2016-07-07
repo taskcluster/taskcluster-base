@@ -21,6 +21,9 @@ Upon pushing an appropriately tagged version to Github, Travis will pick this up
 for you, assuming the tests pass. New versions should be created with `npm version` rather than by
 manually editing `package.json` and tags should be pushed to Github.
 
+We're sticking to [semver](http://semver.org/) as much as possible in Taskcluster, so please keep that in
+mind as you update versions and release packages.
+
 
 Code Conventions
 ----------------
