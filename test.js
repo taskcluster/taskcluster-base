@@ -20,6 +20,7 @@ if (tag === '') {
   console.log('No git tag, no need to check release tag!');
 } else {
   assert.equal('v' + pack.version, tag);
+  console.log('WOOHOO! The git tag matches the package.json version.');
 }
 
 console.log('All tests passed.');
