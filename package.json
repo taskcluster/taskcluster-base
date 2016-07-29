@@ -12,7 +12,7 @@
     "url": "https://github.com/taskcluster/taskcluster-base.git"
   },
   "dependencies": {
-    "azure-entities": "^1.0.1",
+    "azure-entities": "^1.0.2",
     "lodash": "^4.12.0",
     "pulse-publisher": "^1.0.1",
     "taskcluster-client": "1.0.1",
