@@ -15,6 +15,7 @@ _.forIn({
   testing:        'taskcluster-lib-testing',
   monitor:        'taskcluster-lib-monitor',
   scopes:         'taskcluster-lib-scopes',
+  docs:           'taskcluster-lib-docs',
 }, function(module, name) {
   require.resolve(module);
   Object.defineProperty(exports, name, {
