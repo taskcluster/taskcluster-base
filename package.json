@@ -18,7 +18,7 @@
     "taskcluster-client": "1.0.1",
     "taskcluster-lib-api": "^1.1.0",
     "taskcluster-lib-app": "^1.0.0",
-    "taskcluster-lib-docs": "^1.0.1",
+    "taskcluster-lib-docs": "^1.0.3",
     "taskcluster-lib-legacyentities": "^0.8.7",
     "taskcluster-lib-loader": "^1.0.0",
     "taskcluster-lib-monitor": "^3.0.0",
