@@ -15,7 +15,7 @@
     "azure-entities": "^1.0.2",
     "lodash": "^4.12.0",
     "pulse-publisher": "^1.0.1",
-    "taskcluster-client": "1.0.1",
+    "taskcluster-client": "1.1.0",
     "taskcluster-lib-api": "^1.1.0",
     "taskcluster-lib-app": "^1.0.0",
     "taskcluster-lib-docs": "^1.0.3",
