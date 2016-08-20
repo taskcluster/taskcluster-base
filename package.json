@@ -27,6 +27,6 @@
     "taskcluster-lib-stats": "^0.8.7",
     "taskcluster-lib-testing": "^1.0.0",
     "taskcluster-lib-validate": "^2.0.0",
-    "typed-env-config": "^0.10.0"
+    "typed-env-config": "^1.0.0"
   }
 }
