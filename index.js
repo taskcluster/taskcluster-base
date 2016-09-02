@@ -1,9 +1,32 @@
 "use strict";
+var util = require('util');
+
+var awsSdkPromise;
+try {
+  awsSdkPromise = require.resolve('aws-sdk-promise');
+  awsSdkPromise = [
+    'Your environment can resolve the \'aws-sdk-promise\' ',
+    'library.  This is a bad thing because it means that ',
+    'code in your environment import and be broken by it.  ',
+    'What happens is that it overwrites the global \'aws-sdk\' ',
+    '.promise() method with its own version.  Now that the ',
+    'upstream library has a promise implementation, use it.  ',
+    'Do note that you must remove the .data lookup on the ',
+    'resolution value of api calls with the upstream library.',
+    '',
+    '\nFound aws-sdk-promise here: ' + awsSdkPromise,
+  ].join('');
+
+  console.log(msg);
+} catch (err) { }
+
+if (awsSdkPromise) {
+  throw new Error(awsSdkPromise);
+}
 
 // Lazy load all submodules, not many production systems need to load
 // 'testing' and loading code actually takes time.
 var _ = require('lodash');
-var util = require('util');
 _.forIn({
   config:         'typed-env-config',
   app:            'taskcluster-lib-app',
