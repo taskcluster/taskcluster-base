@@ -1,6 +1,10 @@
 TaskCluster Base Modules
 ========================
 
+### DEPRECATED!
+
+You should install any libraries this library includes directly into your project if you wish to use them.
+
 <img src="https://tools.taskcluster.net/lib/assets/taskcluster-120.png" />
 
 [![Build Status](https://travis-ci.org/taskcluster/taskcluster-base.svg?branch=master)](http://travis-ci.org/taskcluster/taskcluster-base)
